@@ -1,0 +1,35 @@
+<ion-header [translucent]="true" >
+  <ion-toolbar color ="primary">
+    <ion-title>
+      Ionic QR Scanner
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button (click)="startScan()" expand="block" fill="clear" shape="round">
+    <ion-icon slot="start" name="add"></ion-icon>
+   Start Scan
+  </ion-button>
+
+  <ion-button (click)="reset()" color="warning" expand="block"  shape="round" *ngIf="scanResults">
+    <ion-icon slot="start" name="refresh"></ion-icon>
+    Reset
+  </ion-button>
+
+  <video #video [hidden]="!scanActive" width="100%"></video>
+
+  <ion-button (click)="stopScan()" color="danger" expand="block" shape="round" *ngIf="scanActive">
+    <ion-icon slot="start" name="close"></ion-icon>
+    Stop Scan
+  </ion-button>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>QR Code</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      {{scanResults}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>
